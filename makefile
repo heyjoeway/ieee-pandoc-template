@@ -2,6 +2,7 @@ BIBLIOGRAPHY = bibliography.bib
 CSL = bibliography.csl
 PAPER = paper.md
 METADATA = metadata.yaml
+TEMPLATE = template.latex
 OUT_DIR = build
 OUT_FNAME = paper.pdf
 
@@ -12,13 +13,12 @@ FLAGS = \
 		-f markdown \
 		--filter pandoc-crossref \
 		--citeproc \
-		--template=template.latex
+		--template=$(TEMPLATE)
 
 all: $(OUT_DIR)/$(OUT_FNAME)
 
-$(OUT_DIR)/$(OUT_FNAME): $(BIBLIOGRAPHY) $(CSL) $(PAPER) $(METADATA) 
+$(OUT_DIR)/$(OUT_FNAME): $(BIBLIOGRAPHY) $(TEMPLATE) $(CSL) $(PAPER) $(METADATA)
 	pandoc -o $(OUT_DIR)/$(OUT_FNAME) $(FLAGS) $(PAPER) $(METADATA)
 
 clean:
 	rm build/*
-

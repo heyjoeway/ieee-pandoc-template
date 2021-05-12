@@ -217,8 +217,11 @@ $endif$
 $if(author)$
 \author{
     $for(author)$
-        \IEEEauthorblockN{$author.name$}
+        \IEEEauthorblockN{$author.name$} \\
         \IEEEauthorblockA{%
+            $if(author.department)$
+            $author.department$ \\
+            $endif$
             $author.affiliation$ \\
             $author.location$ \\
             $author.email$}
