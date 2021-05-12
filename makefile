@@ -3,10 +3,14 @@ FILES = paper.md \
 
 OUTPUT = build
 
-FLAGS = --bibliography=bibliography.bib \
-		--csl=bibliography.csl \
+FLAGS = \
 		-s \
-		-f markdown
+		--bibliography=bibliography.bib \
+		--csl=bibliography.csl \
+		-f markdown \
+		--filter pandoc-crossref \
+		--citeproc \
+
 
 FLAGS_PDF = --template=template.latex
 
