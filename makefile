@@ -1,23 +1,23 @@
-FILES = paper.md \
-		metadata.yaml
-
-OUTPUT = build
+BIBLIOGRAPHY = bibliography.bib
+CSL = bibliography.csl
+PAPER = paper.md
+METADATA = metadata.yaml
+OUT_DIR = build
+OUT_FNAME = paper.pdf
 
 FLAGS = \
 		-s \
-		--bibliography=bibliography.bib \
-		--csl=bibliography.csl \
+		--bibliography=$(BIBLIOGRAPHY) \
+		--csl=$(CSL) \
 		-f markdown \
 		--filter pandoc-crossref \
 		--citeproc \
+		--template=template.latex
 
+all: $(OUT_DIR)/$(OUT_FNAME)
 
-FLAGS_PDF = --template=template.latex
-
-all: pdf
-
-pdf:
-	pandoc -o $(OUTPUT)/paper.pdf $(FLAGS) $(FLAGS_PDF) $(FILES)
+$(OUT_DIR)/$(OUT_FNAME): $(BIBLIOGRAPHY) $(CSL) $(PAPER) $(METADATA) 
+	pandoc -o $(OUT_DIR)/$(OUT_FNAME) $(FLAGS) $(PAPER) $(METADATA)
 
 clean:
 	rm build/*
