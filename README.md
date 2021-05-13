@@ -1,6 +1,6 @@
 # IEEE Paper Template for Pandoc
 
-[![Build Status](https://travis-ci.org/stsewd/ieee-pandoc-template.svg?branch=master)](https://travis-ci.org/stsewd/ieee-pandoc-template)
+Forked from https://github.com/stsewd/ieee-pandoc-template.
 
 ## Requirements
 
@@ -26,6 +26,7 @@ sudo dnf install pandoc pandoc-citeproc texlive-scheme-full
 - Put all your paper content in `paper.md`.
 - Change the title and author in `metadata.yaml`.
 - Run `make` in a terminal.
+    - Optionally, `watch -n 1 make` will automatically rebuild your paper as it's saved.
 - The pdf will be on `build/paper.pdf`.
 
 ## Files
